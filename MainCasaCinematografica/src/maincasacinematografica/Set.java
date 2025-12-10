@@ -6,8 +6,14 @@ package maincasacinematografica;
 
 /**
  *
- * @author paolucci.sara
+ * @author sarap
  */
-public class Produttore extends Membro{
+public class Set extends Produzione {
+    private String luogo;
+    private String costumi;
+    
+    public Set(int l){
+        super(l);
+    }
     
 }

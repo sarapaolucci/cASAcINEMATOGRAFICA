@@ -9,5 +9,11 @@ package maincasacinematografica;
  * @author paolucci.sara
  */
 public class Attore extends Membro {
+    private String ruolo;
+    
+    public Attore(String n, String c, String r){
+        super(n,c);
+        this.ruolo = r;
+    }
     
 }

@@ -3,15 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package maincasacinematografica;
-
+import java.util.ArrayList;
 /**
  *
- * @author paolucci.sara
+ * @author sarap
  */
-public class Regista extends Membro{
+public class CasaCinamatografica {
+    private ArrayList <Film> film = new ArrayList<>();
+    private double budget;
     
-    public Regista(String n, String c){
-        super(n,c);
+    public CasaCinamatografica(double b){
+        this.budget = b;
     }
     
 }
