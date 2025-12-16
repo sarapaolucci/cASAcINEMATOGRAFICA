@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Film {
     private double durata;
     private ArrayList <Membro>  membri = new ArrayList<>();
+    private ArrayList <Produzione> prodotti = new ArrayList<>();
     private double budget;
     private int qualita;
     private Genere genere;
@@ -41,4 +42,15 @@ public class Film {
         }
     }
     
+    public void aggiungiProdotto(Produzione p){
+        if(p != null && prodotti.contains(p)== false){
+            prodotti.add(p);
+        }
+    }
+    
+    public void rimuoviProdotto(Produzione p){
+        if(p != null && prodotti.contains(p)== true){
+            prodotti.remove(p);
+        }
+    }
 }

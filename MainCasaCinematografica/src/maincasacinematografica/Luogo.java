@@ -6,10 +6,10 @@ package maincasacinematografica;
 
 /**
  *
- * @author sarap
+ * @author paolucci.sara
  */
-public enum Tipo {
-    Z_CAM_E2_M4,
-    PANASONIC_LUMIX_BGH1,
-    BLACKMAGIC_PYXIS_6K;
+public enum Luogo {
+    SALOTTO,
+    SPAZIO,
+    OSPEDALE,
 }

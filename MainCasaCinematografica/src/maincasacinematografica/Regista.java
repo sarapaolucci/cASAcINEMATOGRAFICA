@@ -10,8 +10,8 @@ package maincasacinematografica;
  */
 public class Regista extends Membro{
     
-    public Regista(String n, String c){
-        super(n,c);
+    public Regista(String n, String c,double co, int e){
+        super(n,c,co,e);
     }
     
 }

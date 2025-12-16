@@ -14,8 +14,8 @@ public class Camera extends Produzione {
     private int batteria;
     private int microfoni;
     
-    public Camera(int l,Tipo t, int m){
-        super(l);
+    public Camera(int l,double c,Tipo t, int m){
+        super(l,c);
         this.tipo = t;
         this.microfoni = m;
     }

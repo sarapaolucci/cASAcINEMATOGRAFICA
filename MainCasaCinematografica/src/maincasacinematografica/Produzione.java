@@ -12,9 +12,9 @@ public class Produzione {
     private boolean operativo;
     private double costo;
     private int luce;
-    private int qualita;
+    protected int qualita;
     
-    public Produzione(int l){
+    public Produzione(int l,double c){
         this.operativo = true;
         this.luce = l;
     }
@@ -29,6 +29,18 @@ public class Produzione {
     
     public int getQualita(){
         return this.qualita;
+    }
+    
+    public void setOperativo(boolean o){
+        this.operativo = o;
+    }
+    
+    public void rottura(){
+        setOperativo(false);
+    }
+    
+    public void danni(){
+        this.luce -=5;
     }
     
 }

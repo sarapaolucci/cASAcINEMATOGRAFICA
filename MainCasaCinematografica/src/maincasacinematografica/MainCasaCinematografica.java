@@ -14,7 +14,8 @@ public class MainCasaCinematografica {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Form f = new Form();
+        f.setVisible(true);
     }
-    
+    //JOptionPane.showMessageDialog(null,"java is fun","Title",1);
 }
