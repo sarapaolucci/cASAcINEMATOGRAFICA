@@ -17,5 +17,5 @@ public class MainCasaCinematografica {
         Form f = new Form();
         f.setVisible(true);
     }
-    //JOptionPane.showMessageDialog(null,"java is fun","Title",1);
+    
 }
