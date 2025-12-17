@@ -19,8 +19,8 @@ public class Produzione {
         this.luce = l;
     }
     
-    public void setCosto(double c){
-        this.costo = c;
+    public double getCosto(){
+        return this.costo;
     }
     
     public void setQualita(int q){
