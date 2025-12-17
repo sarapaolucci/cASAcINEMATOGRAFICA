@@ -17,6 +17,7 @@ public class Produzione {
     public Produzione(int l,double c){
         this.operativo = true;
         this.luce = l;
+        this.costo = c;
     }
     
     public double getCosto(){

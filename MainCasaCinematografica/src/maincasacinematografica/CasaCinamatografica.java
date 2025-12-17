@@ -9,30 +9,17 @@ import java.util.ArrayList;
  * @author sarap
  */
 public class CasaCinamatografica {
-    private ArrayList <Membro> membri = new ArrayList<>();
-    private ArrayList <Produzione> prodotti = new ArrayList<>();
+    private ArrayList <Film> film = new ArrayList<>();
     
-    public void aggiungiMembro(Membro m){
-        if(m != null && membri.contains(m)== false){
-            membri.add(m);
+    public void aggiungiFilm(Film m){
+        if(m != null && film.contains(m)== false){
+            film.add(m);
         }
     }
     
-    public void aggiungiProdotto(Produzione p){
-        if(p != null && prodotti.contains(p)== false){
-            prodotti.add(p);
-        }
-    }
-    
-    public void rimuoviMembro(Membro m){
-        if(m != null && membri.contains(m)== true){
-            membri.remove(m);
-        }
-    }
-    
-    public void rimuoviProdotto(Produzione p){
-        if(p != null && prodotti.contains(p)== true){
-            prodotti.remove(p);
+    public void rimuoviFilm(Film m){
+        if(m != null && film.contains(m)== true){
+            film.remove(m);
         }
     }
     

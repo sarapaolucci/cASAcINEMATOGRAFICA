@@ -10,7 +10,6 @@ package maincasacinematografica;
  */
 public class Camera extends Produzione {
     private Tipo tipo;
-    private int anni;
     private int batteria;
     private int microfoni;
     
