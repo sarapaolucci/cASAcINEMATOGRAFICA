@@ -17,10 +17,11 @@ public class Produzione {
     public Produzione(int l,double c){
         this.operativo = true;
         this.luce = l;
+        this.costo = c;
     }
     
-    public void setCosto(double c){
-        this.costo = c;
+    public double getCosto(){
+        return this.costo;
     }
     
     public void setQualita(int q){

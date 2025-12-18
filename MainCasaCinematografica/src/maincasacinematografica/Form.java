@@ -14,7 +14,15 @@ import javax.swing.JOptionPane;
 public class Form extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Form.class.getName());
-
+    private Attore a;
+    private Regista r;
+    private Camera c;
+    private Genere genere;
+    private Tipo tipo;
+    private Film f;
+    private Set s;
+    private Luogo luogo;
+            
     /**
      * Creates new form Form
      */
@@ -40,8 +48,209 @@ public class Form extends javax.swing.JFrame {
             return;
         }
         lblCamera.setIcon(new ImageIcon(getClass().getResource(percorso)));
+        f.diminuisciBudget(c.getCosto());
+        lblBudget.setText(String.valueOf(f.getBudget()));
     }
     
+    public void Regista(){
+        String scelta = cmbRegista.getSelectedItem().toString();
+        String percorso = "";
+        switch (scelta) {
+        case "Steven Spielberg":
+            percorso = "/maincasacinematografica/foto/Steven Spielberg.jpg";
+            break;
+        case "Jon Favreau":
+            percorso = "/maincasacinematografica/foto/Jon Favreau.jpg";
+            break;
+        case "Tim Burton":
+            percorso = "/maincasacinematografica/foto/Tim Burton.jpg";
+            break;
+        case "Christopher Nolan":
+            percorso = "/maincasacinematografica/foto/Christopher Nolan.jpg";
+            break;    
+        default:
+            lblRegista.setIcon(null);
+            return;
+        }
+        lblRegista.setIcon(new ImageIcon(getClass().getResource(percorso)));
+        f.diminuisciBudget(r.getCosto());
+        lblBudget.setText(String.valueOf(f.getBudget()));
+    }
+    
+    public void Set(){
+        String scelta = cmbSet.getSelectedItem().toString();
+        String percorso = "";
+        switch (scelta) {
+        case "BIBLIOTECA":
+            percorso = "/maincasacinematografica/foto/BIBLIOTECA.jpg";
+            break;
+        case "OSPEDALE":
+            percorso = "/maincasacinematografica/foto/OSPEDALE.jpg";
+            break;
+        case "SALOTTO":
+            percorso = "/maincasacinematografica/foto/SALOTTO.jpg";
+            break;
+        case "CROCIERA":
+            percorso = "/maincasacinematografica/foto/CROCIERA.jpg";
+            break;
+        case "SPAZIO":
+            percorso = "/maincasacinematografica/foto/SPAZIO.jpg";
+            break;
+        case "RISTORANTE":
+            percorso = "/maincasacinematografica/foto/RISTORANTE.jpg";
+            break;    
+        default:
+            lblSet.setIcon(null);
+            return;
+        }
+        lblSet.setIcon(new ImageIcon(getClass().getResource(percorso)));
+        f.diminuisciBudget(s.getCosto());
+        lblBudget.setText(String.valueOf(f.getBudget()));
+    }
+        
+    
+    public void Attore(){
+        String scelta = cmbAttore.getSelectedItem().toString();
+        String percorso = "";
+        switch (scelta) {
+        case "Cillian Murphy":
+            percorso = "/maincasacinematografica/foto/Cillian Murphy.jpg";
+            break;
+        case "Scarlett Johansson":
+            percorso = "/maincasacinematografica/foto/Scarlett Johansson.jpg";
+            break;
+        case "Meryl Streep":
+            percorso = "/maincasacinematografica/foto/Meryl Streep.jpg";
+            break;
+        case "Tom Cruise":
+            percorso = "/maincasacinematografica/foto/Tom Cruise.jpg";
+            break;    
+        default:
+            lblAttore.setIcon(null);
+            return;
+        }
+        lblAttore.setIcon(new ImageIcon(getClass().getResource(percorso)));
+        f.diminuisciBudget(a.getCosto());
+        lblBudget.setText(String.valueOf(f.getBudget()));
+    }
+    
+    public void CostoAttore(){
+        String scelta = cmbAttore.getSelectedItem().toString();
+        switch(scelta){
+            case "Cillian Murphy":
+            a = new Attore("Cillian","Murphy","protagonista",500,9);
+            break;
+        case "Scarlett Johansson":
+            a = new Attore("Scarlett","Johansson","co-protagonista",400,7);
+            break;
+        case "Meryl Streep":
+            a = new Attore("Meryl","Streep","protagonista",425,7);
+            break;
+        case "Tom Cruise":
+            a = new Attore("Tom","Cruise","co-protagonista",450,7);
+            break; 
+        }
+        lblCostoAttore.setText(String.valueOf(a.getCosto()));
+    }
+    
+    public void CostoCamera(){
+        String scelta = cmbCamera.getSelectedItem().toString();
+        tipo = Tipo.valueOf(scelta);
+        switch(scelta){
+            case "Z_CAM_E2_M4":
+            c = new Camera(5,40,tipo,6);
+            break;
+        case "PANASONIC_LUMIX_BGH1":
+            c = new Camera(6,60,tipo,7);
+            break;
+        case "BLACKMAGIC_PYXIS_6K":
+            c = new Camera(5,70,tipo,5);
+            break; 
+        }
+        lblCostoCamera.setText(String.valueOf(c.getCosto()));
+    }
+    
+    public void CostoRegista(){
+        String scelta = cmbRegista.getSelectedItem().toString();
+        switch(scelta){
+        case "Steven Spielberg":
+            r = new Regista("Steven","Spielberg",300,6);
+            break;
+        case "Jon Favreau":
+            r = new Regista("Jon","Favreau",350,6);
+            break;
+        case "Tim Burton":
+            r = new Regista("Tim","Burton",600,6);
+            break;
+        case "Christopher Nolan":
+            r = new Regista("Christopher","Nolan",700,6);
+            break; 
+        }
+        lblCostoRegista.setText(String.valueOf(r.getCosto()));
+    }
+    
+    public void CostoSet(){
+        String scelta = cmbSet.getSelectedItem().toString();
+        double costo = 0;
+        int luce = 0;
+        switch (scelta) {
+        case "BIBLIOTECA":
+            costo = 20;
+            luce = 9;
+            break;
+        case "OSPEDALE":
+            costo = 66;
+            luce = 10;
+            break;
+        case "SALOTTO":
+            costo = 55.5;
+            luce = 6;
+            break;
+        case "CROCIERA":
+            costo = 34.8;
+            luce = 8;
+            break;
+        case "SPAZIO":
+            costo = 99;
+            luce = 2;
+            break;
+        case "RISTORANTE":
+            costo = 45.2;
+            luce = 10;
+            break; 
+        }
+        luogo = Luogo.valueOf(scelta);
+        s = new Set(luce,costo,luogo);
+        lblCostoSet.setText(String.valueOf(s.getCosto()));
+    }
+    
+    public void Film(){
+        String g = cmbGenere.getSelectedItem().toString();
+        double budget = 0;
+        switch(g){
+        case "COMMEDIA":
+            budget = 12000;
+            break;
+        case "AZIONE":
+            budget = 16000;
+            break;
+        case "GIALLO":
+            budget = 18000;
+            break;
+        case "FANTASY":
+            budget = 13000;
+            break;
+        case "AVVENTURA":
+            budget = 15000;
+            break;
+        case "ROMANCE":
+            budget = 10000;
+            break;
+        }
+        genere = Genere.valueOf(g);
+        f = new Film(budget,genere);
+        lblBudget.setText(String.valueOf(f.getBudget()));
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,22 +262,22 @@ public class Form extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbSet = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         cmbCamera = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        cmbAttore = new javax.swing.JComboBox<>();
+        cmbRegista = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         lblCamera = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblRegista = new javax.swing.JLabel();
+        lblSet = new javax.swing.JLabel();
+        lblAttore = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -78,22 +287,40 @@ public class Form extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        cmbGenere = new javax.swing.JComboBox<>();
+        lblDurata = new javax.swing.JLabel();
+        lblBudget = new javax.swing.JLabel();
+        btnIstruzioni = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        lblCostoCamera = new javax.swing.JLabel();
+        lblCostoRegista = new javax.swing.JLabel();
+        lblCostoSet = new javax.swing.JLabel();
+        lblCostoAttore = new javax.swing.JLabel();
+        btnCamera = new javax.swing.JButton();
+        btnRegista = new javax.swing.JButton();
+        btnSet = new javax.swing.JButton();
+        btnAttore = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 204, 204));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 124, 189));
         jLabel1.setText("CASA CINEMATOGRAFICA");
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbSet.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cmbSet.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SPAZIO", "OSPEDALE", "SALOTTO", "RISTORANTE", "BIBLIOTECA", "CROCIERA" }));
+        cmbSet.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        cmbSet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSetActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("CAMERA");
@@ -103,6 +330,7 @@ public class Form extends javax.swing.JFrame {
 
         cmbCamera.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         cmbCamera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Z_CAM_E2_M4", "PANASONIC_LUMIX_BGH1", "BLACKMAGIC_PYXIS_6K" }));
+        cmbCamera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         cmbCamera.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbCameraActionPerformed(evt);
@@ -115,11 +343,23 @@ public class Form extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("ATTORE");
 
-        jComboBox3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cillian Murphy", "Scarlett Johansson", "Meryl Streep", "Item 4" }));
+        cmbAttore.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cmbAttore.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cillian Murphy", "Scarlett Johansson", "Meryl Streep", "Tom Cruise" }));
+        cmbAttore.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        cmbAttore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbAttoreActionPerformed(evt);
+            }
+        });
 
-        jComboBox4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Christopher Nolan", "Tim Burton", "Jon Favreau", "Steven Spielberg" }));
+        cmbRegista.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cmbRegista.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Christopher Nolan", "Tim Burton", "Jon Favreau", "Steven Spielberg" }));
+        cmbRegista.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        cmbRegista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbRegistaActionPerformed(evt);
+            }
+        });
 
         jSeparator1.setForeground(new java.awt.Color(255, 153, 204));
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -136,24 +376,23 @@ public class Form extends javax.swing.JFrame {
             }
         });
 
-        lblCamera.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblCamera.setIcon(new javax.swing.ImageIcon(getClass().getResource("/maincasacinematografica/foto/BLACKMAGIC_PYXIS_6K.jpg"))); // NOI18N
+        lblCamera.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblCamera.setText("FOTO-CAMERA");
         lblCamera.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 204)));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/maincasacinematografica/foto/Steven Spielberg.jpg"))); // NOI18N
-        jLabel7.setText("FOTO-REGISTA");
-        jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 204)));
+        lblRegista.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblRegista.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblRegista.setText("FOTO-REGISTA");
+        lblRegista.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 204)));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("FOTO-SET");
-        jLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 204)));
+        lblSet.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblSet.setText("FOTO-SET");
+        lblSet.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 204)));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/maincasacinematografica/foto/Tom Cruise.jpg"))); // NOI18N
-        jLabel9.setText("FOTO-ATTORE");
-        jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 204)));
+        lblAttore.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        lblAttore.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblAttore.setText("FOTO-ATTORE");
+        lblAttore.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 153, 204)));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("QUALITA'");
@@ -188,19 +427,25 @@ public class Form extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel18.setText("BUDGET");
 
-        jComboBox5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COMMEDIA", "FANTASY", "ROMANCE", "AVVENTURA", "AZIONE", "GIALLO" }));
-
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel19.setText("...");
-
-        jLabel20.setText("...");
-
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setText("ELIMINA");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        cmbGenere.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cmbGenere.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COMMEDIA", "FANTASY", "ROMANCE", "AVVENTURA", "AZIONE", "GIALLO" }));
+        cmbGenere.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                cmbGenereActionPerformed(evt);
+            }
+        });
+
+        lblDurata.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblDurata.setText("...");
+
+        lblBudget.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblBudget.setText("...");
+
+        btnIstruzioni.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnIstruzioni.setText("ISTRUZIONI");
+        btnIstruzioni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIstruzioniActionPerformed(evt);
             }
         });
 
@@ -210,155 +455,272 @@ public class Form extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton4.setText("EVENTO CASUALE");
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel6.setText("COSTO");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel7.setText("COSTO");
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel9.setText("COSTO");
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel21.setText("COSTO");
+        jLabel21.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        lblCostoCamera.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblCostoCamera.setText("...");
+
+        lblCostoRegista.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblCostoRegista.setText("...");
+
+        lblCostoSet.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblCostoSet.setText("...");
+
+        lblCostoAttore.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        lblCostoAttore.setText("...");
+
+        btnCamera.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnCamera.setText("+");
+        btnCamera.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(255, 153, 204), new java.awt.Color(255, 153, 204)));
+        btnCamera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCameraActionPerformed(evt);
+            }
+        });
+
+        btnRegista.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnRegista.setText("+");
+        btnRegista.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(255, 153, 204), new java.awt.Color(255, 153, 204)));
+        btnRegista.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistaActionPerformed(evt);
+            }
+        });
+
+        btnSet.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnSet.setText("+");
+        btnSet.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(255, 153, 204), new java.awt.Color(255, 153, 204)));
+        btnSet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSetActionPerformed(evt);
+            }
+        });
+
+        btnAttore.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        btnAttore.setText("+");
+        btnAttore.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(204, 204, 204), new java.awt.Color(204, 204, 204), new java.awt.Color(255, 153, 204), new java.awt.Color(255, 153, 204)));
+        btnAttore.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAttoreActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel2))
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel18))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(cmbGenere, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(27, 27, 27)
+                                        .addComponent(lblBudget, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel16)
+                                .addGap(28, 28, 28)
+                                .addComponent(lblDurata, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnIstruzioni)
                                 .addGap(18, 18, 18)
+                                .addComponent(jButton2))
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(5, 5, 5)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jComboBox4, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jComboBox3, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(cmbCamera, javax.swing.GroupLayout.Alignment.LEADING, 0, 1, Short.MAX_VALUE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel9)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblCostoSet))
+                                            .addComponent(cmbSet, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel21)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblCostoAttore))
+                                            .addComponent(cmbAttore, 0, 1, Short.MAX_VALUE))))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnSet, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(btnAttore, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
+                                .addComponent(jLabel2)
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel16)
-                                            .addComponent(jLabel17)
-                                            .addComponent(jLabel18))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(28, 28, 28)
-                                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(27, 27, 27)
-                                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblCostoCamera))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton3)
+                                        .addComponent(cmbCamera, 0, 1, Short.MAX_VALUE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jButton2))
-                                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(34, 34, 34)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(btnCamera, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(31, 31, 31)
-                                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(40, 40, 40)
-                                                .addComponent(jButton1))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jButton4)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(lblCamera, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(2, 2, 2)
+                                        .addComponent(jLabel3)
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(54, 54, 54))))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel7)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblCostoRegista))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(cmbRegista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(btnRegista, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jLabel1))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(26, 26, 26)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel10)
+                        .addGap(47, 47, 47)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel10)
-                                .addGap(47, 47, 47)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(58, 58, 58))))))
+                                .addGap(30, 30, 30)
+                                .addComponent(jButton1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jButton4)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblSet, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblCamera, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRegista, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblAttore, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(54, 54, 54))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(cmbCamera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cmbCamera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCamera))
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(lblCostoCamera))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(cmbRegista, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRegista))
+                        .addGap(1, 1, 1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(lblCostoRegista))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(9, 9, 9)
+                            .addComponent(cmbSet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSet))
+                        .addGap(1, 1, 1)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(lblCostoSet))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel5)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmbAttore, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAttore)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel19)
+                            .addComponent(jLabel21)
+                            .addComponent(lblCostoAttore))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDurata)
                             .addComponent(jLabel16))
-                        .addGap(24, 24, 24)
+                        .addGap(12, 12, 12)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel17)
-                            .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(21, 21, 21)
+                            .addComponent(cmbGenere, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
-                            .addComponent(jLabel20))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(lblBudget))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton3)
+                            .addComponent(btnIstruzioni)
                             .addComponent(jButton2))
-                        .addGap(21, 21, 21))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblRegista, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblCamera, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jButton1))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(lblSet, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(lblAttore, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(42, 42, 42)
+                                        .addGap(41, 41, 41)
                                         .addComponent(jButton4)))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                         .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -380,13 +742,45 @@ public class Form extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btnIstruzioniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIstruzioniActionPerformed
+        JOptionPane.showMessageDialog(null,"Obiettivo: Creare un film di alta qualità \n(Con 5 cuori il film è perfetto) \n Prima cosa da fare è scegliere il genere e in base a quello vi verrà assegnato un budget \n Seconda cosa da fare è scegliere (considerando il costo) un attore, un regista, un set e una camera e registrare \n Ogni volta che si pigia sul tasto registra ","Istruzioni",1);
+    }//GEN-LAST:event_btnIstruzioniActionPerformed
 
     private void cmbCameraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCameraActionPerformed
-        Camera();
+        CostoCamera();
     }//GEN-LAST:event_cmbCameraActionPerformed
+
+    private void cmbRegistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbRegistaActionPerformed
+        CostoRegista();
+    }//GEN-LAST:event_cmbRegistaActionPerformed
+
+    private void cmbAttoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbAttoreActionPerformed
+        CostoAttore();
+    }//GEN-LAST:event_cmbAttoreActionPerformed
+
+    private void btnCameraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCameraActionPerformed
+        Camera();
+    }//GEN-LAST:event_btnCameraActionPerformed
+
+    private void btnRegistaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistaActionPerformed
+        Regista();
+    }//GEN-LAST:event_btnRegistaActionPerformed
+
+    private void btnSetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSetActionPerformed
+        Set();
+    }//GEN-LAST:event_btnSetActionPerformed
+
+    private void btnAttoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttoreActionPerformed
+        Attore();
+    }//GEN-LAST:event_btnAttoreActionPerformed
+
+    private void cmbGenereActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbGenereActionPerformed
+        Film();
+    }//GEN-LAST:event_cmbGenereActionPerformed
+
+    private void cmbSetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbSetActionPerformed
+        CostoSet();
+    }//GEN-LAST:event_cmbSetActionPerformed
 
     /**
      * @param args the command line arguments
@@ -414,15 +808,19 @@ public class Form extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAttore;
+    private javax.swing.JButton btnCamera;
+    private javax.swing.JButton btnIstruzioni;
+    private javax.swing.JButton btnRegista;
+    private javax.swing.JButton btnSet;
+    private javax.swing.JComboBox<String> cmbAttore;
     private javax.swing.JComboBox<String> cmbCamera;
+    private javax.swing.JComboBox<String> cmbGenere;
+    private javax.swing.JComboBox<String> cmbRegista;
+    private javax.swing.JComboBox<String> cmbSet;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -433,18 +831,26 @@ public class Form extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel lblAttore;
+    private javax.swing.JLabel lblBudget;
     private javax.swing.JLabel lblCamera;
+    private javax.swing.JLabel lblCostoAttore;
+    private javax.swing.JLabel lblCostoCamera;
+    private javax.swing.JLabel lblCostoRegista;
+    private javax.swing.JLabel lblCostoSet;
+    private javax.swing.JLabel lblDurata;
+    private javax.swing.JLabel lblRegista;
+    private javax.swing.JLabel lblSet;
     // End of variables declaration//GEN-END:variables
 }

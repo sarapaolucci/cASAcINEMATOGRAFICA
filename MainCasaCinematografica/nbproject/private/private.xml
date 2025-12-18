@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/paolucci.sara/Desktop/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/MainCasaCinematografica.java</file>
             <file>file:/C:/Users/paolucci.sara/Desktop/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/Genere.java</file>
             <file>file:/C:/Users/paolucci.sara/Desktop/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/Form.java</file>
@@ -19,6 +20,21 @@
             <file>file:/C:/Users/paolucci.sara/Desktop/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/Luogo.java</file>
 =======
 >>>>>>> Stashed changes
+=======
+            <file>file:/C:/Users/sarap/OneDrive/Documenti/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/MainCasaCinematografica.java</file>
+            <file>file:/C:/Users/sarap/OneDrive/Documenti/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/Membro.java</file>
+            <file>file:/C:/Users/sarap/OneDrive/Documenti/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/Regista.java</file>
+            <file>file:/C:/Users/sarap/OneDrive/Documenti/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/Attore.java</file>
+            <file>file:/C:/Users/sarap/OneDrive/Documenti/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/CasaCinamatografica.java</file>
+            <file>file:/C:/Users/sarap/OneDrive/Documenti/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/Film.java</file>
+            <file>file:/C:/Users/sarap/OneDrive/Documenti/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/Produzione.java</file>
+            <file>file:/C:/Users/sarap/OneDrive/Documenti/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/Camera.java</file>
+            <file>file:/C:/Users/sarap/OneDrive/Documenti/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/Set.java</file>
+            <file>file:/C:/Users/sarap/OneDrive/Documenti/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/Genere.java</file>
+            <file>file:/C:/Users/sarap/OneDrive/Documenti/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/Tipo.java</file>
+            <file>file:/C:/Users/sarap/OneDrive/Documenti/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/Form.java</file>
+            <file>file:/C:/Users/sarap/OneDrive/Documenti/GitHub/cASAcINEMATOGRAFICA/MainCasaCinematografica/src/maincasacinematografica/Luogo.java</file>
+>>>>>>> c69b8edffeb813d869aac49ee274e6e85576716a
         </group>
     </open-files>
 </project-private>

@@ -34,6 +34,10 @@ public class Membro {
         this.salute = true;
     }
     
+    public double getCosto(){
+        return this.costo;
+    }
+    
     public void setSalute(boolean s){
         this.salute = s;
     }

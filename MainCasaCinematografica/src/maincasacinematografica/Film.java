@@ -22,8 +22,12 @@ public class Film {
         this.genere = g;
     }
     
-    public void setBudget(double b){
-        this.budget = b;
+    public void diminuisciBudget(double b){
+        this.budget -= b;
+    }
+    
+    public double getBudget(){
+        return this.budget;
     }
     
     public void setDurata(double d){

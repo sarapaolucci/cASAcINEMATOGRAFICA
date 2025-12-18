@@ -10,6 +10,9 @@ package maincasacinematografica;
  */
 public enum Luogo {
     SALOTTO,
+    BIBLIOTECA,
+    RISTORANTE,
+    CROCIERA,
     SPAZIO,
     OSPEDALE,
 }
