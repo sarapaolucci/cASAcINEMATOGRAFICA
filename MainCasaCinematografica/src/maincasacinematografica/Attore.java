@@ -26,14 +26,22 @@ public class Attore extends Membro {
     }
     
     public void recita(){
+        int soglia = 0;
         if(esperienza > 8){
-            int r = random.nextInt(101);
-            if(r > 20){
-                
-            }
+            soglia = 80;
         }
         else{
-            
+            soglia = 55;
+        }
+        int r = random.nextInt(101);
+        if(r < soglia){
+           qualita +=10;
+        }
+        else{
+            qualita +=5;
         }
     }
+    
+    
+    
 }

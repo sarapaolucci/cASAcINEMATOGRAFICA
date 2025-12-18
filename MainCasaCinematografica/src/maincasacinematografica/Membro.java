@@ -32,6 +32,7 @@ public class Membro {
         this.costo = co;
         this.esperienza= e;
         this.salute = true;
+        this.qualita = 0;
     }
     
     public double getCosto(){
