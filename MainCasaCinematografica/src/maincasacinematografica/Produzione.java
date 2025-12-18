@@ -11,7 +11,7 @@ package maincasacinematografica;
 public class Produzione {
     private boolean operativo;
     private double costo;
-    private int luce;
+    protected int luce;
     protected int qualita;
     
     public Produzione(int l,double c){
@@ -43,5 +43,7 @@ public class Produzione {
     public void danni(){
         this.luce -=5;
     }
+    
+    
     
 }

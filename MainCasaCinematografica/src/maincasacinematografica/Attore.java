@@ -35,10 +35,10 @@ public class Attore extends Membro {
         }
         int r = random.nextInt(101);
         if(r < soglia){
-           qualita +=10;
+           qualita =10;
         }
         else{
-            qualita +=5;
+            qualita =5;
         }
     }
     

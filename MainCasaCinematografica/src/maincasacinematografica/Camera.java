@@ -11,12 +11,16 @@ package maincasacinematografica;
 public class Camera extends Produzione {
     private Tipo tipo;
     private int batteria;
-    private int microfoni;
     
-    public Camera(int l,double c,Tipo t, int m){
+    public Camera(int l,double c,Tipo t){
         super(l,c);
         this.tipo = t;
-        this.microfoni = m;
+        this.batteria = 100;
+    }
+    
+    public void danni(){
+        luce -=5;
+        batteria = 10;
     }
     
 }

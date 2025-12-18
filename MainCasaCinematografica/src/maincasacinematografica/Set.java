@@ -25,4 +25,16 @@ public class Set extends Produzione {
     public void danni(){
         setCostumi(false);
     }
+    
+    public void setta(){
+        if(luogo.equals(Luogo.SPAZIO)== true){
+            qualita =10;
+        }
+        else if(luogo.equals(Luogo.BIBLIOTECA)== true){
+            qualita =1;
+        }
+        else{
+            qualita =5;
+        }
+    }
 }

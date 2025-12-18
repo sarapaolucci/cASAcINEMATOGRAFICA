@@ -4,6 +4,7 @@
  */
 package maincasacinematografica;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -17,21 +18,35 @@ public class Film {
     private int qualita;
     private Genere genere;
     
+    Random random = new Random();
+    
     public Film(double b, Genere g){
         this.budget = b;
         this.genere = g;
+    }
+    
+    public ArrayList<Membro> getMembri(){
+        return this.membri;
+    }
+    
+    public ArrayList<Produzione> getProdotti(){
+        return this.prodotti;
     }
     
     public void diminuisciBudget(double b){
         this.budget -= b;
     }
     
+    public void setQualita(int q){
+        this.qualita = q;
+    }
+    
     public double getBudget(){
         return this.budget;
     }
     
-    public void setDurata(double d){
-        this.durata = d;
+    public double getDurata(){
+        return this.durata;
     }
     
     public void aggiungiMembro(Membro m){
@@ -57,4 +72,10 @@ public class Film {
             prodotti.remove(p);
         }
     }
+    
+    public void durataScena(){
+        durata += random.nextDouble(10.0, 31.0);
+    }
+
+    
 }

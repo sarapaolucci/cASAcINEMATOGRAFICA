@@ -35,12 +35,20 @@ public class Membro {
         this.qualita = 0;
     }
     
+    public int getQualita(){
+        return this.qualita;
+    }
+    
     public double getCosto(){
         return this.costo;
     }
     
     public void setSalute(boolean s){
         this.salute = s;
+    }
+    
+    public boolean getSalute(){
+        return this.salute;
     }
     
     public void malattia(){
